@@ -78,11 +78,8 @@ public class Celular implements Comparable<Celular> {
             return false;
         Celular other = (Celular) obj;
         if (modelo == null) {
-            if (other.modelo != null)
-                return false;
-        } else if (!modelo.equals(other.modelo))
-            return false;
-        return true;
+            return other.modelo == null;
+        } else return modelo.equals(other.modelo);
     }
 
     @Override
@@ -95,14 +92,14 @@ public class Celular implements Comparable<Celular> {
         sb = new StringBuilder();
         sb.append("\n");
         sb.append("Celular: \n");
-        sb.append("Modelo del celular: " + modelo + "\n");
-        sb.append("Marca del celular: " + marca + "\n");
-        sb.append("Sistema operativo: " + sistemaOperativo + "\n");
-        sb.append("Precio: " + precio + "MXN\n");
-        sb.append("Tamaño de pantalla: " + tamanioPantalla + " pulgadas\n");
-        sb.append("Tamaño de memoria: " + memInterna + "GB\n");
-        sb.append("Año de fabricación: " + anio + "\n");
-        sb.append("Color: " + color);
+        sb.append("Modelo del celular: ").append(modelo).append("\n");
+        sb.append("Marca del celular: ").append(marca).append("\n");
+        sb.append("Sistema operativo: ").append(sistemaOperativo).append("\n");
+        sb.append("Precio: ").append(precio).append("MXN\n");
+        sb.append("Tamaño de pantalla: ").append(tamanioPantalla).append(" pulgadas\n");
+        sb.append("Tamaño de memoria: ").append(memInterna).append("GB\n");
+        sb.append("Año de fabricación: ").append(anio).append("\n");
+        sb.append("Color: ").append(color);
         return sb.toString();
     }
 

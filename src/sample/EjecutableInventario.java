@@ -14,7 +14,6 @@ public class EjecutableInventario {
         String modelo;
         String marca;
         String sistemaOperativo;
-        String info;
         String color;
         int precio;
         double tamanioPantalla;

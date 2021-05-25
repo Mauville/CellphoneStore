@@ -159,19 +159,15 @@ public class Controller {
 
     @FXML
     public void initialize() {
-//        col1.setCellValueFactory(new PropertyValueFactory<>("col1"));
-//        col2.setCellValueFactory(new PropertyValueFactory<>("col2"));
-//        col3.setCellValueFactory(new PropertyValueFactory<>("col3"));
-//        col4.setCellValueFactory(new PropertyValueFactory<>("col4"));
-//        col5.setCellValueFactory(new PropertyValueFactory<>("col4"));
 
-        //TEST DATA
-        File selectedFile = new File("C:\\Users\\x220\\Desktop\\ProyectoFinal1\\graphicalStore\\src\\Celulares.txt");
         col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
         col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
         col3.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
         col4.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
         col5.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
+
+        //TEST DATA
+        File selectedFile = new File("C:\\Users\\x220\\Desktop\\ProyectoFinal1\\graphicalStore\\src\\Celulares.txt");
         loadData(selectedFile);
         //TEST DATA
     }

@@ -1,7 +1,6 @@
 package sample;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Inventario {
     private String empleado;
@@ -280,11 +279,12 @@ public class Inventario {
 
     public String cel2string(ArrayList<Celular> b) {
         StringBuilder a = new StringBuilder();
-        for (int i = 0; i < b.size(); i++) {
-            a.append(b.get(i).toString());
+        for (Celular celular : b) {
+            a.append(celular.toString());
             a.append("\n---------------\n");
         }
         return a.toString();
     }
+
 
 }
