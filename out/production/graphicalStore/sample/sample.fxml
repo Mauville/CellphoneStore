@@ -73,10 +73,11 @@
                   </Text>
                   <TableView fx:id="displayTable" prefHeight="150.0" prefWidth="396.0">
                     <columns>
-                      <TableColumn fx:id="col1" prefWidth="163.0" />
-                      <TableColumn fx:id="col2" prefWidth="157.0" />
-                        <TableColumn fx:id="col3" prefWidth="160.0" />
-                        <TableColumn fx:id="col4" prefWidth="159.0" />
+                      <TableColumn fx:id="col1" prefWidth="112.0" />
+                      <TableColumn fx:id="col2" prefWidth="136.0" />
+                        <TableColumn fx:id="col3" prefWidth="125.0" />
+                        <TableColumn fx:id="col4" prefWidth="137.0" />
+                        <TableColumn fx:id="col5" prefWidth="129.0" />
                     </columns>
                   </TableView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Búsqueda">
@@ -92,9 +93,9 @@
                               <TextField fx:id="searchTermField" prefWidth="164.0" />
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="9.0">
                                  <children>
-                                    <Button fx:id="modelSearchButton" mnemonicParsing="false" text="Modelo" />
-                                    <Button fx:id="OSSearchButton" mnemonicParsing="false" text="OS" />
-                                    <Button fx:id="brandSearchButton" mnemonicParsing="false" text="Marca" />
+                                    <Button fx:id="modelSearchButton" mnemonicParsing="false" onAction="#searchByModel" text="Modelo" />
+                                    <Button fx:id="OSSearchButton" mnemonicParsing="false" onAction="#searchByOS" text="OS" />
+                                    <Button fx:id="brandSearchButton" mnemonicParsing="false" onAction="#searchByBrand" text="Marca" />
                                  </children>
                               </HBox>
                            </children>

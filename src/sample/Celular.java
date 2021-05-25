@@ -27,8 +27,6 @@ public class Celular implements Comparable<Celular> {
     }
 
     //Getters & Setters
-
-
     public String getMarca() {
         return marca;
     }
@@ -106,6 +104,10 @@ public class Celular implements Comparable<Celular> {
         sb.append("Año de fabricación: " + anio + "\n");
         sb.append("Color: " + color);
         return sb.toString();
+    }
+
+    public String prettyString() {
+        return modelo + " $" + precio;
     }
 
 }
