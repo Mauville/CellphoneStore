@@ -12,7 +12,10 @@ public class Celular implements Comparable<Celular> {
     private String color;
 
     public Celular() {
+        this.modelo = "VACIO";
+        this.precio = 0;
     }
+
 
     public Celular(String modelo, String marca, String sistemaOperativo, int precio, double tamanioPantalla, int memInterna, int anio, String color) {
         this();

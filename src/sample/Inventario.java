@@ -272,6 +272,8 @@ public class Inventario {
             for (int j = 0; j <= vitrina[i].length - 1; j++) {
                 if (vitrina[i][j] != null && vitrina[i][j].getModelo() != null)
                     a.add(vitrina[i][j]);
+                else
+                    a.add(new Celular());
             }
         }
         return a;

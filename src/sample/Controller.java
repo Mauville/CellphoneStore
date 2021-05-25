@@ -5,12 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -41,19 +42,19 @@ public class Controller {
     @FXML
     private TextArea logArea;
     @FXML
-    private TableView<Celular> displayTable;
+    private TableView<Repisa> displayTable;
     @FXML
-    private TableColumn<Celular, String> col1;
+    private TableColumn<Repisa, String> col1;
     @FXML
-    private TableColumn<Celular, String> col2;
+    private TableColumn<Repisa, String> col2;
     @FXML
-    private TableColumn<Celular, String> col3;
+    private TableColumn<Repisa, String> col3;
     @FXML
-    private TableColumn<Celular, String> col4;
+    private TableColumn<Repisa, String> col4;
     @FXML
-    private TableColumn<Celular, String> col5;
+    private TableColumn<Repisa, String> col5;
 
-    private ObservableList<Celular> displayList;
+    private ObservableList<Repisa> displayList;
 
     Inventario miInventario = new Inventario("Teresa García");
 
@@ -160,11 +161,11 @@ public class Controller {
     @FXML
     public void initialize() {
 
-        col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
-        col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
-        col3.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
-        col4.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
-        col5.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
+        col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev1()));
+        col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev2()));
+        col3.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev3()));
+        col4.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev4()));
+        col5.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev5()));
 
         //TEST DATA
         File selectedFile = new File("C:\\Users\\x220\\Desktop\\ProyectoFinal1\\graphicalStore\\src\\Celulares.txt");
@@ -173,8 +174,55 @@ public class Controller {
     }
 
     private void refreshTable() {
-        displayList = FXCollections.observableList(miInventario.getFlattenedVitrina());
+
+        List<Celular> flatVitrina = miInventario.getFlattenedVitrina();
+        List<Repisa> repisas = new ArrayList<>();
+        repisas.add(new Repisa(flatVitrina.subList(0, 5)));
+        repisas.add(new Repisa(flatVitrina.subList(5, 10)));
+        repisas.add(new Repisa(flatVitrina.subList(10, flatVitrina.size())));
+        displayList = FXCollections.observableList(repisas);
         displayTable.getItems().setAll(displayList);
+    }
+
+    public static class Repisa {
+        private final SimpleStringProperty dev1;
+        private final SimpleStringProperty dev2;
+        private final SimpleStringProperty dev3;
+        private final SimpleStringProperty dev4;
+        private final SimpleStringProperty dev5;
+
+        public Repisa(List<Celular> a) {
+            this.dev1 = new SimpleStringProperty(a.get(0).prettyString());
+            this.dev2 = new SimpleStringProperty(a.get(1).prettyString());
+            this.dev3 = new SimpleStringProperty(a.get(2).prettyString());
+            this.dev4 = new SimpleStringProperty(a.get(3).prettyString());
+            this.dev5 = new SimpleStringProperty(a.get(4).prettyString());
+        }
+
+        public String getDev1() {
+            return dev1.get();
+        }
+
+        public String getDev2() {
+            return dev2.get();
+        }
+
+
+        public String getDev3() {
+            return dev3.get();
+        }
+
+
+        public String getDev4() {
+            return dev4.get();
+        }
+
+
+        public String getDev5() {
+            return dev5.get();
+        }
+
+
     }
 
     @FXML
