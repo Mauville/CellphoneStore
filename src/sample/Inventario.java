@@ -200,19 +200,9 @@ public class Inventario {
 
 
     //Indica el porcentaje de ocupacion de la matriz
-    public double indicaOcupacion() {
-        int i, j, cuantos;
-        double por;
-        cuantos = 0;
-        for (i = 0; i < MAXF; i++) {
-            for (j = 0; j < MAXC; j++) {
-                if (vitrina[i][j] != null) {
-                    cuantos++;
-                }
-            }
-        }
-        por = (double) cuantos / (MAXF * MAXC);
-        return por;
+    public int indicaOcupacion() {
+        return getFlattenedVitrina().size() * 100 / MAXC * MAXF;
+
     }
 
     public static <T extends Comparable<T>> int cuantosMenorA(T a[], int n, T goals) {

@@ -21,9 +21,8 @@ public class EjecutableInventario {
         int anio;
         int resp[];
         double porcentaje;
-        porcentaje = miInventario.indicaOcupacion();
 
-        miArchivo = new File("Celulares.txt");
+        miArchivo = new File("sample.Celulares.txt");
         try {
             lectura = new Scanner(miArchivo);
             n = lectura.nextInt();
@@ -61,6 +60,7 @@ public class EjecutableInventario {
             System.out.println("El numero de celulares de marca Huawei: " + miInventario.cuentaPorMarca("Huawei"));
 
             System.out.println("\n");
+            porcentaje = miInventario.indicaOcupacion();
 
             //Imprimiendo el porcentaje de ocupación de la matriz
             System.out.println("Porcentaje de ocupación: ");

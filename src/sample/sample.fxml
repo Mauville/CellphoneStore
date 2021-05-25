@@ -147,7 +147,12 @@
                               <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteDevice" text="Baja" />
                            </children>
                         </VBox>
-                        <Label fx:id="statusFieldLabel" text="{STATUS}" />
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="statusFieldLabel" text="{STATUS}" />
+                              <Label fx:id="matrixPercentLabel" text="Matrix Percent" />
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>

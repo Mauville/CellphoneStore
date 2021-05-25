@@ -1,0 +1,8 @@
+﻿= Cellphone Store
+Because coppel isn't cr*ppy enough.
+
+Mock a cellphone store using an MVC in JavaFX.
+
+Final project for OOP class.
+
+image::img_readme_1.png[loading=lazy]

@@ -38,6 +38,8 @@ public class Controller {
     @FXML
     private Label selectedFileLabel;
     @FXML
+    private Label matrixPercentLabel;
+    @FXML
     private Label statusFieldLabel;
     @FXML
     private TextArea logArea;
@@ -54,8 +56,6 @@ public class Controller {
     @FXML
     private TableColumn<Repisa, String> col5;
 
-    private ObservableList<Repisa> displayList;
-
     Inventario miInventario = new Inventario("Teresa García");
 
     @FXML
@@ -65,12 +65,12 @@ public class Controller {
 
     @FXML
     public void searchByOS() {
-        logArea.setText(miInventario.buscaCelularOS(searchTermField.getText()).toString());
+        logArea.setText(miInventario.buscaCelularOS(searchTermField.getText()));
     }
 
     @FXML
     public void searchByBrand() {
-        logArea.setText(miInventario.buscaCelularMarca(searchTermField.getText()).toString());
+        logArea.setText(miInventario.buscaCelularMarca(searchTermField.getText()));
     }
 
     @FXML
@@ -161,6 +161,7 @@ public class Controller {
     @FXML
     public void initialize() {
 
+        // Call getter to receive string representation of object that resides inside a cell
         col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev1()));
         col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev2()));
         col3.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDev3()));
@@ -175,13 +176,18 @@ public class Controller {
 
     private void refreshTable() {
 
+        // A tableview works like a repisa. You add objects to every repisa, then load the repisas on the tableview.
+        // The table view calls the neccessary methods in each of the objects inside the repisa to get the string representation
+        // See initialize() comment.
+        // Repisa is a new container class
         List<Celular> flatVitrina = miInventario.getFlattenedVitrina();
         List<Repisa> repisas = new ArrayList<>();
         repisas.add(new Repisa(flatVitrina.subList(0, 5)));
         repisas.add(new Repisa(flatVitrina.subList(5, 10)));
         repisas.add(new Repisa(flatVitrina.subList(10, flatVitrina.size())));
-        displayList = FXCollections.observableList(repisas);
+        ObservableList<Repisa> displayList = FXCollections.observableList(repisas);
         displayTable.getItems().setAll(displayList);
+        matrixPercentLabel.setText(miInventario.indicaOcupacion() / 10 + "%");
     }
 
     public static class Repisa {
@@ -227,8 +233,8 @@ public class Controller {
 
     @FXML
     private void createDevice() {
-        int resp[] = miInventario.altaCelular(createModelField.getText(), createBrandField.getText(), createOSField.getText(), new Integer(createPriceField.getText()), new Double(createSSField.getText()), new Integer(createMemField.getText()), new Integer(createYearField.getText()), createColorField.getText());
-        String stat = "";
+        int[] resp = miInventario.altaCelular(createModelField.getText(), createBrandField.getText(), createOSField.getText(), new Integer(createPriceField.getText()), new Double(createSSField.getText()), new Integer(createMemField.getText()), new Integer(createYearField.getText()), createColorField.getText());
+        String stat;
         if (resp[0] == -1) {
             stat = "Alta no exitosa";
         } else {
