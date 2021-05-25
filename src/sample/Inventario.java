@@ -131,18 +131,19 @@ public class Inventario {
 
 
     //Eliminar un Celular de la matriz
-    public String bajaCelular(String modelo) {
+    public boolean bajaCelular(String modelo) {
         for (int i = 0; i < vitrina.length; i++) {
             for (int j = 0; j < vitrina[0].length; j++) {
                 if (vitrina[i][j] != null) {
                     if (vitrina[i][j].getModelo().equals(modelo)) {
                         vitrina[i][j] = null;
+                        return true;
                     }
                 }
 
             }
         }
-        return modelo;
+        return false;
     }
 
 

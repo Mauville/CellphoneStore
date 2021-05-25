@@ -15,18 +15,6 @@ import java.util.Scanner;
 
 public class Controller {
     @FXML
-    private Button exploreButton;
-    @FXML
-    private Button modelSearchButton;
-    @FXML
-    private Button OSSearchButton;
-    @FXML
-    private Button brandSearchButton;
-    @FXML
-    private Button createButton;
-    @FXML
-    private Button deleteButton;
-    @FXML
     private TextField searchTermField;
     @FXML
     private TextField createModelField;
@@ -34,6 +22,8 @@ public class Controller {
     private TextField createBrandField;
     @FXML
     private TextField createOSField;
+    @FXML
+    private TextField createPriceField;
     @FXML
     private TextField createSSField;
     @FXML
@@ -68,15 +58,17 @@ public class Controller {
     Inventario miInventario = new Inventario("Teresa García");
 
     @FXML
-    public void searchByModel(){
+    public void searchByModel() {
         logArea.setText(miInventario.buscaCelular(searchTermField.getText()).toString());
     }
+
     @FXML
-    public void searchByOS(){
+    public void searchByOS() {
         logArea.setText(miInventario.buscaCelularOS(searchTermField.getText()).toString());
     }
+
     @FXML
-    public void searchByBrand(){
+    public void searchByBrand() {
         logArea.setText(miInventario.buscaCelularMarca(searchTermField.getText()).toString());
     }
 
@@ -175,17 +167,42 @@ public class Controller {
 
         //TEST DATA
         File selectedFile = new File("C:\\Users\\x220\\Desktop\\ProyectoFinal1\\graphicalStore\\src\\Celulares.txt");
-        col1.setCellValueFactory(cellData ->new SimpleStringProperty(cellData.getValue().prettyString()));
-        col2.setCellValueFactory(cellData ->new SimpleStringProperty(cellData.getValue().prettyString()));
-        col3.setCellValueFactory(cellData ->new SimpleStringProperty(cellData.getValue().prettyString()));
-        col4.setCellValueFactory(cellData ->new SimpleStringProperty(cellData.getValue().prettyString()));
-        col5.setCellValueFactory(cellData ->new SimpleStringProperty(cellData.getValue().prettyString()));
+        col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
+        col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
+        col3.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
+        col4.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
+        col5.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().prettyString()));
         loadData(selectedFile);
         //TEST DATA
     }
 
     private void refreshTable() {
-        displayList = FXCollections.observableList(miInventario.getFlattenedVitrina()) ;
+        displayList = FXCollections.observableList(miInventario.getFlattenedVitrina());
         displayTable.getItems().setAll(displayList);
+    }
+
+    @FXML
+    private void createDevice() {
+        int resp[] = miInventario.altaCelular(createModelField.getText(), createBrandField.getText(), createOSField.getText(), new Integer(createPriceField.getText()), new Double(createSSField.getText()), new Integer(createMemField.getText()), new Integer(createYearField.getText()), createColorField.getText());
+        String stat = "";
+        if (resp[0] == -1) {
+            stat = "Alta no exitosa";
+        } else {
+            stat = "Alta exitosa";
+        }
+        System.out.println(stat);
+        statusFieldLabel.setText(stat);
+        refreshTable();
+    }
+
+    @FXML
+    private void deleteDevice() {
+        boolean resp = miInventario.bajaCelular(deleteModelField.getText());
+        if (resp)
+            statusFieldLabel.setText("Celular dado de baja.");
+        else
+            statusFieldLabel.setText("Error");
+
+        refreshTable();
     }
 }

@@ -122,6 +122,8 @@
                               <TextField fx:id="createBrandField" />
                               <Label text="Sistema Operativo" />
                               <TextField fx:id="createOSField" />
+                              <Label text="Precio" />
+                              <TextField fx:id="createPriceField" />
                               <Label text="Tamaño de Pantalla" />
                               <TextField fx:id="createSSField" />
                               <Label text="Memoria Interna" />
@@ -130,7 +132,7 @@
                               <TextField fx:id="createYearField" />
                               <Label text="Color" />
                               <TextField fx:id="createColorField" />
-                              <Button fx:id="createButton" mnemonicParsing="false" text="Alta" />
+                              <Button fx:id="createButton" mnemonicParsing="false" onAction="#createDevice" text="Alta" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
@@ -142,7 +144,7 @@
                               </Label>
                               <Label text="Modelo" />
                               <TextField fx:id="deleteModelField" />
-                              <Button fx:id="deleteButton" mnemonicParsing="false" text="Baja" />
+                              <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteDevice" text="Baja" />
                            </children>
                         </VBox>
                         <Label fx:id="statusFieldLabel" text="{STATUS}" />
