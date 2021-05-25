@@ -1,8 +1,158 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="851.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <VBox alignment="TOP_CENTER" prefHeight="905.0" prefWidth="640.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tienda Celulares">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="selectedFileLabel" text="Ningun Archivo Seleccionado">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="exploreButton" mnemonicParsing="false" onAction="#displayBrowser" text="Explorar" />
+                     </children>
+                  </HBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="displayTable" prefHeight="150.0" prefWidth="396.0">
+                    <columns>
+                      <TableColumn fx:id="col1" prefWidth="163.0" />
+                      <TableColumn fx:id="col2" prefWidth="157.0" />
+                        <TableColumn fx:id="col3" prefWidth="160.0" />
+                        <TableColumn fx:id="col4" prefWidth="159.0" />
+                    </columns>
+                  </TableView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Búsqueda">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="BASELINE_CENTER" prefHeight="117.0" prefWidth="640.0" spacing="86.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="201.0" spacing="14.0">
+                           <children>
+                              <Label text="Termino de busqueda" />
+                              <TextField fx:id="searchTermField" prefWidth="164.0" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="9.0">
+                                 <children>
+                                    <Button fx:id="modelSearchButton" mnemonicParsing="false" text="Modelo" />
+                                    <Button fx:id="OSSearchButton" mnemonicParsing="false" text="OS" />
+                                    <Button fx:id="brandSearchButton" mnemonicParsing="false" text="Marca" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="logArea" editable="false" prefHeight="115.0" prefWidth="241.0" promptText="Resultados:" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cambios">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="54.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+                           <children>
+                              <Label text="Alta" />
+                              <Label text="Modelo" />
+                              <TextField fx:id="createModelField" />
+                              <Label layoutX="10.0" layoutY="10.0" text="Marca" />
+                              <TextField fx:id="createBrandField" />
+                              <Label text="Sistema Operativo" />
+                              <TextField fx:id="createOSField" />
+                              <Label text="Tamaño de Pantalla" />
+                              <TextField fx:id="createSSField" />
+                              <Label text="Memoria Interna" />
+                              <TextField fx:id="createMemField" />
+                              <Label text="Año" />
+                              <TextField fx:id="createYearField" />
+                              <Label text="Color" />
+                              <TextField fx:id="createColorField" />
+                              <Button fx:id="createButton" mnemonicParsing="false" text="Alta" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Label text="Baja">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Modelo" />
+                              <TextField fx:id="deleteModelField" />
+                              <Button fx:id="deleteButton" mnemonicParsing="false" text="Baja" />
+                           </children>
+                        </VBox>
+                        <Label fx:id="statusFieldLabel" text="{STATUS}" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" top="25.0" />
+               </padding>
+            </VBox>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
